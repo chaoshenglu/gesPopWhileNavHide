@@ -24,7 +24,7 @@ class FirstViewController: UIViewController {
     }
 
     @objc private func goToSecond() {
-        self.navigationController?.pushViewController(SecondViewController(), animated: true)
+        navigationController?.pushViewController(SecondViewController(), animated: true)
     }
 
 }
