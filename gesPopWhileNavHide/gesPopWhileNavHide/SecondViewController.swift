@@ -8,9 +8,9 @@
 
 import UIKit
 
-class SecondViewController: UIViewController,UIGestureRecognizerDelegate/********** ① **********/ {
+class SecondViewController: UIViewController,UIGestureRecognizerDelegate /********** ① **********/ {
     
-    var original_ipgr_delegate : UIGestureRecognizerDelegate?/********** ② **********/
+    private var original_ipgr_delegate : UIGestureRecognizerDelegate? /********** ② **********/
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +29,8 @@ class SecondViewController: UIViewController,UIGestureRecognizerDelegate/*******
         self.navigationController?.setNavigationBarHidden(true, animated:true)
         
         /********** ③ **********/
-        self.original_ipgr_delegate = self.navigationController?.interactivePopGestureRecognizer?.delegate
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        original_ipgr_delegate = navigationController?.interactivePopGestureRecognizer?.delegate
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,7 +38,7 @@ class SecondViewController: UIViewController,UIGestureRecognizerDelegate/*******
         self.navigationController?.setNavigationBarHidden(false, animated:true)
         
         /********** ④ **********/
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self.original_ipgr_delegate
+        navigationController?.interactivePopGestureRecognizer?.delegate = original_ipgr_delegate
     }
 
     @objc private func goToThird() {
